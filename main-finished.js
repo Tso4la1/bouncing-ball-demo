@@ -1,10 +1,7 @@
-// set up canvas
-
-const para = document.querySelector("p");
+const para = document.querySelector('p');
 let count = 0;
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
@@ -13,6 +10,7 @@ const height = canvas.height = window.innerHeight;
 function random(min, max) {
    const num = Math.floor(Math.random() * (max - min + 1)) + min;
    return num;
+   
 }
 
 // function to generate random RGB color value
@@ -22,8 +20,8 @@ function randomRGB() {
 
 }
 
-
 class Shape {
+
    constructor(x, y, velX, velY) {
       this.x = x;
       this.y = y;
@@ -35,11 +33,10 @@ class Shape {
 class Ball extends Shape {
 
    constructor(x, y, velX, velY, color, size) {
-      super(x, y, velX, velY)
+      super(x, y, velX, velY);
       this.color = color;
       this.size = size;
       this.exists = true;
-
    }
 
    draw() {
@@ -87,12 +84,15 @@ class Ball extends Shape {
 }
 
 class EvilCircle extends Shape {
+
    constructor(x, y) {
       super(x, y, 20, 20);
+
       this.color = "white";
       this.size = 10;
 
-      window.addEventListener("keydown", e => {
+
+      window.addEventListener('keydown', (e) => {
          switch (e.key) {
             case 'a':
                this.x -= this.velX;
@@ -107,13 +107,13 @@ class EvilCircle extends Shape {
                this.y += this.velY;
                break;
          }
-      })
+      });
    }
 
    draw() {
       ctx.beginPath();
-      ctx.stokeStyle = this.color;
-      ctx.linewidth = 3;
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = 3;
       ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
       ctx.stroke();
    }
@@ -151,6 +151,7 @@ class EvilCircle extends Shape {
          }
       }
    }
+
 }
 
 const balls = [];
@@ -170,7 +171,7 @@ while (balls.length < 25) {
 
    balls.push(ball);
    count++;
-   para.textContent = "Ball count:" + " " + count;
+   para.textContent = 'Ball count: ' + count;
 }
 
 const evilBall = new EvilCircle(random(0, width), random(0, height));
@@ -195,5 +196,3 @@ function loop() {
 }
 
 loop();
-
-

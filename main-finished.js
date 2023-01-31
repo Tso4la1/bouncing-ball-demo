@@ -23,7 +23,7 @@ function randomRGB() {
 }
 
 
-class shape {
+class Shape {
    constructor (x, y, velX, velY) {
       this.x = x;
       this.y = y;
@@ -32,7 +32,7 @@ class shape {
   }
 }
 
-class Ball extends shape {
+class Ball extends Shape {
 
    constructor(x, y, velX, velY, color, size) {
       super(x, y, velX, velY)
@@ -86,7 +86,7 @@ class Ball extends shape {
 
 }
 
-class EvilCircle extends shape {
+class EvilCircle extends Shape {
    constructor (x, y){
       super(x, y, 20, 20);
       this.color = "white";
